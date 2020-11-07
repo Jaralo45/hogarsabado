@@ -55,6 +55,32 @@ class RegistroControlador extends BaseController{
 
 	}
 
+	public function buscar(){
+		
+		//1. Crear un objeto del Modelo
+		$modeloPersonas=new ModeloPersonas();
+
+		//2. Ejecutar la busqueda
+		try{
+
+			//2.1 Ejecutar findALL
+			$datosConsultados=$modeloPersonas->findAll();
+
+			//2.2 Preparar los datos para la vista
+			$datosParaVista=array("usuarios"=>$datosConsultados);
+
+			//2.3 LLamar a la vista que va a mostrar los datos
+			return view('vistaListado',$datosParaVista);
+
+
+		}catch(\Exception $error){
+
+			echo($error->getMessage());
+
+		}
+
+	}
+
 	//--------------------------------------------------------------------
 
 }
