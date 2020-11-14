@@ -82,6 +82,11 @@
                     </div>
                     <div class="row mt-3">
                         <div class="col-12">
+                            <input type="text" class="form-control" placeholder="URL IMAGEN" name="foto">  
+                        </div>   
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-12">
                             <textarea class="form-control" rows="3" name="descripcion"></textarea>
                         </div>   
                     </div>

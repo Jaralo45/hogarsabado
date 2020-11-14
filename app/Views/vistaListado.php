@@ -21,10 +21,20 @@
 
                 <div class="col mb-4">
                     <div class="card h-100">
-                        <img src="http://placeimg.com/640/480/animals" class="card-img-top" alt="IMAGEN">
+                        <img src="<?= $usuario["foto"]?>" class="card-img-top" alt="IMAGEN">
                         <div class="card-body">
                             <h5 class="card-title"><?= $usuario["nombre"]?></h5>
                             <p class="card-text"><?= $usuario["descripcion"]?></p>
+                            <p class="card-text">
+                                <?php            
+                                    if($usuario["poblacion"]==0){
+                                        echo("POBLACIÓN: NO APLICA");
+                                    }else if($usuario["poblacion"]==1){
+                                        echo("POBLACIÓN: NIÑO");
+                                    }
+                                ?>
+                            </p>
+                            <a href="<?php echo(base_url("public/personas/eliminar/".$usuario["id"]))?>" class="btn btn-danger">Eliminar</a>
                         </div>
                     </div>
                 </div>

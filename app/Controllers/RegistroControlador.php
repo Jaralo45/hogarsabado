@@ -16,6 +16,7 @@ class RegistroControlador extends BaseController{
 		$cedula=$this->request->getPost("cedula");
 		$poblacion=$this->request->getPost("poblacion");
 		$descripcion=$this->request->getPost("descripcion");
+		$foto=$this->request->getPost("foto");
 
 		//2. Organizar los datos que llegan de las vistas
 		// en un arreglo asociativo 
@@ -25,7 +26,8 @@ class RegistroControlador extends BaseController{
 			"edad"=>$edad,
 			"cedula"=>$cedula,
 			"poblacion"=>$poblacion,
-			"descripcion"=>$descripcion
+			"descripcion"=>$descripcion,
+			"foto"=>$foto
 		);
 
 		//3. Crear un objeto del MODELO para porder 
@@ -36,7 +38,7 @@ class RegistroControlador extends BaseController{
 		try{
 			
 			$modeloPersonas->insert($datosEnvio);
-			echo("Registro agregado");	
+			echo("Registro agregado");
 
 
 		}catch(\Exception $error){
@@ -72,6 +74,25 @@ class RegistroControlador extends BaseController{
 			//2.3 LLamar a la vista que va a mostrar los datos
 			return view('vistaListado',$datosParaVista);
 
+
+		}catch(\Exception $error){
+
+			echo($error->getMessage());
+
+		}
+
+	}
+
+	public function eliminar($id){
+
+		//1. Crear un objeto del modelo
+		$modeloPersonas=new ModeloPersonas();
+
+		//2. Ejecutar la funcion delete del modelo identificando el registro a eliminar
+		try{
+
+			$modeloPersonas->where('id',$id)->delete();
+			echo("Usuario eliminado con exito");
 
 		}catch(\Exception $error){
 
